@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html> <head> <style>
+    .flex-container {
+      display: flex;  flex-direction:row;
+      background-color: red;
+  }
+
+.flex-container > div {  /*div children of the flex container*/
+  background-color: #f1f1f1; 
+  margin: 10px;  padding: 20px;  font-size: 30px;
+}
+
+/* Responsive layout */
+@media (max-width: 600px) { 
+	 .flex-container{
+		 flex-direction:column;
+		 background-color: green;
+	  }
+	}
+</style></head>
+
+
+
+<body>
+    <h2>Divya Krishnamaneni build a cycler</h2>
+    <label for="name">Input Element: </label><input id="name" type="text"></input><br><br>
+    <div class="flex-container" id="target">
+        <div class="cycler">cycler1</div>   
+		<div class="cycler">cycler2</div>  
+		<div class="cycler">cycler3</div>  
+      </div>
+  
+  
+      
+    <button type="button" class="btn btn-primary" onclick="makeNewDiv()" style="color:blue; background-color: aqua;">Add Value</button>
+    <button type="button" class="btn btn-primary" onclick="get()" style="color:blue; background-color: aqua;" >Get</button>
+	<button type="button" class="btn btn-primary" onclick="spin()" style="color: blue; background-color: aqua;">Spin</button>
+</body>
+<script>
+	function makeNewDiv(){		
+		let element = document.createElement("div");
+		element.innerHTML = document.getElementById("name").value;
+		element.className = "cycler";		
+		document.getElementById('target').appendChild(element)		
+	}
+    function get(){
+        var cyclerItems = document.getElementsByClassName('cycler');
+		if (cyclerItems.length > 0) {
+			cyclerItems[cyclerItems.length - 1].remove();
+		}
+
+    }
+    function spin(){
+        let cyclerItems = document.getElementsByClassName('cycler');
+        
+        
+        let cyclersSize=cyclerItems.length;
+        if(cyclersSize == 0 || cyclersSize==1){
+			 	alert("No Items in the cycler to spin");
+				return;
+			}
+        else{
+            let removedItem=cyclerItems[cyclerItems.length - 1]
+            cyclerItems[cyclerItems.length - 1].remove();
+            document.getElementById('target').insertBefore(removedItem,document.getElementById('target').firstChild);
+        }
+        /*for (let index = 0; index < cyclersSize; index++) {
+			let element = cyclerItems[index].innerHTML;
+			if (element == inputData) {
+				console.log(cyclerItems[index])
+				cyclerItems[index].remove();
+				index--;
+			} */
+		
+			
+    }
+</script>
+</html>	
