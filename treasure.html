@@ -108,12 +108,15 @@
 
             </div>
         </div>
+        <div id="button" type="button" class="btn btn-success" onclick="reset()">New Game</div>
+
         <script>
             let ids = [];
             let chestCount = 0;
             let score = 0;
             let lastCheck = 12;
             let treasureLocation = 18;
+            //let treasureLocation = Math.round(Math.random() * (24));//(max-min)-min i.e. (24-0)+0
 
             for (var i = 0; i < 25; i++) {
                 ids.push("image" + i)
@@ -130,9 +133,9 @@
                 document.getElementById("chests").innerHTML = "Number of chests is " + chestCount;
                 document.getElementById("score").innerHTML = "Score is " + score;
                 lastCheck=position;
-                //distanceOfAnimal = distance(position, treasureLocation);
+                
 
-                //document.getElementById("distance").innerHTML = "Distance is " + distanceOfAnimal;
+                
             }
             function help(){
                 col_num=lastCheck%5;
@@ -162,6 +165,14 @@
                     }     
                       }           
             }
+            function reset() {
+            chestCount = 0;
+            score = 0
+            treasureLocation = Math.round(Math.random() * (24));//(max-min)-min i.e. (23-0)+0
+            document.getElementById("chests").innerHTML = "Number of chests is " + chestCount;;
+            document.getElementById("score").innerHTML = "Score is "+score;                        
+
+        }
 
 
 
